@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Day</title>
+    <link rel="icon" href="public/img/fix logo crea.png" type="image" />
+    <link href="dist/output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10">
+      <div class="container">
+        <div class="flex items-center justify-between relative">
+          <div class="px-4">
+            <a href="index.html" class="w-auto">
+              <img src="public/img/logo.svg" />
+            </a>
+          </div>
+          <div class="flex items-center px-4">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block absolute right-4 lg:hidden"
+            >
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+            </button>
+
+            <nav
+              id="nav-menu"
+              class="hidden absolute py-5 bg-white shadow-lg rounded-lg w-full right-0 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+            >
+              <ul class="block lg:flex">
+                <li class="group">
+                  <a
+                    href="index.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Home</a
+                  >
+                </li>
+                <li class="group">
+                  <div
+                    @click.away="open = false"
+                    class="relative"
+                    x-data="{ open: false }"
+                  >
+                    <button
+                      @click="open = !open"
+                      class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    >
+                      <span class="text-base font-manrope mx-4">Event</span>
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        :class="{'rotate-180': open, 'rotate-0': !open}"
+                        class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                    <div
+                      x-show="open"
+                      x-transition:enter="transition ease-out duration-100"
+                      x-transition:enter-start="transform opacity-0 scale-95"
+                      x-transition:enter-end="transform opacity-100 scale-100"
+                      x-transition:leave="transition ease-in duration-75"
+                      x-transition:leave-start="transform opacity-100 scale-100"
+                      x-transition:leave-end="transform opacity-0 scale-95"
+                      class="absolute px-2 py-2 rounded-md dark-mode:bg-gray-800 max-w-sm -ml-6"
+                    >
+                      <div
+                        class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 max-w-sm ml-36"
+                      >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 focus:text-gray-900 hover:bg-gray-200 hover:text-purple focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="workshop.html"
+                          >Workshop</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="exhibition.html"
+                          >Exhibition</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="fest.html"
+                          >Fest</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="umkm.html"
+                          >Market Day</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="group">
+                  <a
+                    href="merchandise.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Merchandise</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="competition.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Competition</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="talkshow.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Talkshow</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- navbar end -->
+
+    <!-- hero section start -->
+    <section class="mt-0 items-center w-full relative">
+      <div
+        class="bg-local bg-no-repeat bg-cover bg-center justify-center w-full"
+        style="
+          background-image: url(public/img/bg\ umkm.svg);
+          background-size: cover;
+        "
+      >
+        <div class="container">
+          <h1
+            class="text-5xl mt-8 pt-14 lg:pt-16 xl:pt-28 text-white font-dsd text-center"
+          >
+            MARKET DAY
+          </h1>
+          <div class="justify-center items-center pt-0 lg:pt-3 xl:pt-3">
+            <!-- Paragraf -->
+            <div class="w-full justify-center pt-16 pb-16 px-24">
+              <p
+                class="text-white font-manrope normal-case items-center text-center"
+              >
+                Eyes x Creanomic 2023 is a bazaar event attended by tenants from
+                Ukm, Individuals, Communities and Companies who sell interesting
+                food and goods. This event is open to students and the general
+                public.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- card -->
+        <section id="Blog" class="pt-8 px-20">
+          <div class="container">
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Warung Madura.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Warung Madura</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Startoops.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Startoops</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Selfiroom Studio.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Selfroom Studio</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Pasta Ekraf.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Pasta Ekraf</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Panda Lovely.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Panda Lovely</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Nuansa Teh.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Nuansa Teh</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img src="public/img/Mixue.jpg" alt="Blog" class="w-full" />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Mixue</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Kedaily Coffe _ Kitchen.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Kedaily Coffe & Kitchen</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Hisana Fried Chicken.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Hisana Fried Chicken</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Hida Rajut.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Hida Rajut</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Donut Topping Bomboloni.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Donut Topping Bomboloni</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/DapurFyi.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Dapur.Fyi</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img src="public/img/Cintani.jpg" alt="Blog" class="w-full" />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Cintani</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Buket Bunga dari Kawat Bulu.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Buket Bunga dari Kawat Bulu</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Bakpao Maju Jaya.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Bakpao Maju Jaya</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Angkringans.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Angkringans</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="center-center"
+                  data-aos-duration="3000"
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img src="public/img/Addien.jpg" alt="Blog" class="w-full" />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Addien</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="w-full px-4 lg:w-1/3 xl:w-1/3"
+              >
+                <div
+                  class="bg-white rounded-xl shadow-lg overflow-hidden mb-10"
+                >
+                  <img
+                    src="public/img/Berryl Stand.jpg"
+                    alt="Blog"
+                    class="w-full"
+                  />
+                  <div class="py-8 px-6">
+                    <h3>
+                      <a
+                        href="#"
+                        class="block mb-3 font-semibold text-xl text-slate-950 hover:text-purple-600 truncate text-center"
+                        >Berryl Stand</a
+                      >
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- card -->
+      </div>
+    </section>
+    <!-- hero end -->
+
+    <!-- footer -->
+    <footer class="bg-white bottom-0 w-full py-4">
+      <div class="container">
+        <div class="flex items-center justify-between">
+          <div class="px-4">
+            <p class="text-left font-manrope text-lg">
+              Copyright &copy; Creanomic 2023. All rights reserved
+            </p>
+          </div>
+          <div id="footer" class="py-5 bg-white flex lg:py-0">
+            <ul class="flex lg:justify-end">
+              <li class="mx-5 w-14">
+                <a href="https://www.instagram.com/creanomic_vokasiub/">
+                  <img src="public/img/instagram.svg" alt="Instagram" />
+                </a>
+              </li>
+              <li class="mx-5 w-14">
+                <a href="https://www.tiktok.com/@creanomic_vokasiub">
+                  <img src="public/img/tiktok.svg" alt="TikTok" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- script -->
+    <script src="dist/js/script.js"></script>
+  </body>
+</html>

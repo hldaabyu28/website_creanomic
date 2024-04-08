@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- meta start -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta name="description" content="Creanomic 2023" />
+    <meta name="title" content="CREANOMIC 2023" />
+    <meta name="keywords" content="Creanomic 2023" />
+    <meta property="og:title" content="CREANOMIC 2023" />
+    <meta property="og:description" content="CREANOMIC 2023" />
+    <meta name="language" content="id-ID" />
+    <!-- meta end -->
+    <title>CREANOMIC 2023</title>
+    <link rel="icon" href="public/img/fix logo crea.png" type="image" />
+    <link href="dist/output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+  </head>
+  <body
+    class="bg-local bg-no-repeat bg-cover bg-center justify-center w-full bg-[url('public/img/Home.svg')]"
+  >
+    <!-- navbar -->
+    <header
+      class="bg-white justify-center fixed top-0 left-0 w-full flex items-center z-50"
+    >
+      <div class="container">
+        <div class="flex items-center justify-between relative">
+          <div class="px-4">
+            <a href="index.html" class="w-auto">
+              <img src="public/img/logo.svg" />
+            </a>
+          </div>
+          <div class="flex items-center px-4">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block absolute right-4 lg:hidden"
+            >
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+            </button>
+
+            <nav
+              id="nav-menu"
+              class="hidden bg-white absolute py-5 shadow-lg rounded-lg w-full right-0 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+            >
+              <ul class="block lg:flex">
+                <li class="group">
+                  <a
+                    href="index.html"
+                    class="font-bold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Home</a
+                  >
+                </li>
+                <li class="group">
+                  <div
+                    @click.away="open = false"
+                    class="relative"
+                    x-data="{ open: false }"
+                  >
+                    <button
+                      @click="open = !open"
+                      class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    >
+                      <span class="text-base font-manrope mx-4">Event</span>
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        :class="{'rotate-180': open, 'rotate-0': !open}"
+                        class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                    <div
+                      x-show="open"
+                      x-transition:enter="transition ease-out duration-100"
+                      x-transition:enter-start="transform opacity-0 scale-95"
+                      x-transition:enter-end="transform opacity-100 scale-100"
+                      x-transition:leave="transition ease-in duration-75"
+                      x-transition:leave-start="transform opacity-100 scale-100"
+                      x-transition:leave-end="transform opacity-0 scale-95"
+                      class="absolute px-2 py-2 rounded-md dark-mode:bg-gray-800 max-w-sm -ml-6"
+                    >
+                      <div
+                        class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 max-w-sm ml-36"
+                      >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-bold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 focus:text-gray-900 hover:bg-gray-200 hover:text-purple focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="workshop.html"
+                          >Workshop</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-bold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="exhibition.html"
+                          >Exhibition</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-bold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="fest.html"
+                          >Fest</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-bold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="umkm.html"
+                          >Market Day</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="group">
+                  <a
+                    href="merchandise.html"
+                    class="font-bold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Merchandise</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="competition.html"
+                    class="font-bold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Competition</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="talkshow.html"
+                    class="font-bold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Talkshow</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- navbar end -->
+    <!-- hero section start -->
+    <section
+      id="home"
+      class="pt-24 mt-0 flex flex-col items-center w-full -mb-96"
+    >
+      <div class="container relative flex justify-center px-6 lg:px-20">
+        <span class="absolute left-80 -top-20 z-10">
+          <img src="public/img/cloud.svg" alt="cloud" />
+        </span>
+
+        <span class="absolute left-44 top-28 z-10">
+          <img src="public/img/cloud.svg" alt="cloud" />
+        </span>
+        <span class="absolute right-36 -top-28 z-10">
+          <img src="public/img/cloud.svg" alt="cloud" />
+        </span>
+
+        <span class="absolute right-3 top-10">
+          <img src="public/img/cloud.svg" alt="cloud" />
+        </span>
+        <div
+          class="flex flex-col items-center lg:justify-between lg:flex-row w-full py-16"
+        >
+          <div
+            class="w-full flex flex-col items-center lg:items-start px-4 lg:w-1/2 z-10"
+          >
+            <h1
+              class="font-bold text-purple text-6xl lg:text-[100px] m-0 p-0 text-center lg:text-start gradient-title bg-clip-text font-dsd"
+            >
+              CREANOMIC <br />2023
+            </h1>
+
+            <p
+              class="text-xl sm:text-lg md:text-xl lg:text-2xl font-normal text-black mt-1 mb-8 font-manrope pt-7 text-center lg:text-start"
+            >
+              Future Buisness and Technology
+            </p>
+
+            <a
+              href="#aboutus"
+              class="text-base font-semibold font-manrope text-white bg-pink py-3 px-10 rounded-2xl hover:shadow-lg hover:bg-purple transition duration-300 ease-in-out"
+              >Lets Start</a
+            >
+          </div>
+          <img
+            src="public/img/mascot creanomic 2023.png"
+            alt="robot"
+            class="w-[500px] z-10"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- about us -->
+    <div class="">
+      <section class="pt-96 mt-56 flex flex-col items-center w-full">
+        <div class="container px-6 lg:px-20 flex items-center justify-center">
+          <div
+            class="flex flex-col lg:flex-row w-full gap-8 lg:gap-4 items-center"
+          >
+            <div
+              class="flex-[1_1_40%] flex justify-center items-center w-full lg:w-auto h-full"
+            >
+              <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="center-center"
+                data-aos-duration="3000"
+                class="rounded-xl w-full lg:w-auto relative overflow-hidden"
+              >
+                <video
+                  class="w-full h-[300px] xl:h-[280px] xl:w-[470px]"
+                  controls
+                >
+                  <source src="public/img/teaser.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </div>
+            <div class="flex-[1_1_60%] flex justify-center">
+              <div
+                class="flex flex-col justify-center items-center py-[82px] px-[56px] opacity-80 bg-white rounded-xl shadow-lg lg:shadow-none relative"
+              >
+                <h1
+                  class="text-black text-center font-dsd text-3xl mb-6 uppercase"
+                  id="aboutus"
+                >
+                  About Us
+                </h1>
+                <p class="text-center text-base font-manrope max-w-[520px]">
+                  Creanomics is an activity carried out every year in the BEM
+                  work program of the Brawijaya University Vocational School
+                  which is a forum for young entrepreneurs to channel the
+                  interests and talents shown by students, both general,
+                  national and international. Where the Creanomic event itself
+                  consistently raises the topic of creativity and innovation,
+                  maintaining the exploration of economic business and
+                  technology by also presenting new events, art exhibitions and
+                  seminars.
+                </p>
+                <span class="absolute right-0 top-0 lg:-right-20 lg:-top-10">
+                  <img
+                    src="public/img/13 1.svg"
+                    alt="Bintang"
+                    class="lg:h-56 h-20"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- about us end -->
+
+        <!-- competition -->
+        <h1
+          class="text-5xl mt-[400px] pt-96 lg:pt-16 xl:pt-28 pb-16 font-dsd text-center text-white drop-shadow-lg"
+          id="competition"
+        >
+          Competition
+        </h1>
+
+        <div class="flex justify-center w-full">
+          <div class="container flex justify-center">
+            <div class="w-2/12 flex items-center">
+              <div class="w-full text-right">
+                <button
+                  onclick="prev()"
+                  class="p-3 rounded-full bg-white border border-gray-100 shadow-lg mr-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div id="sliderContainer" class="w-10/12 overflow-hidden">
+              <ul id="slider" class="flex w-full">
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/ui ux.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      UI/UX Design
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Digital Pathfinders : Transforming User Experiences in
+                      Digital Marketing
+                      <br />
+                      <br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/12qOJbTlP086v1XJcDheImGvUaFBwVNd3?usp=drive_link"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/fashion show.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      Fashion Show
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Coorporate Couture : A Fashion Show for Office
+                      <br />
+                      <br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/13iU9ncvQpHWlwPWwHuFxSvVFMuE1vdFv"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/bussines case.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      Business Case
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Digital Drive: Revolutionizing Marketing Strategies in the
+                      Digital Era
+                      <br />
+                      <br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/1cxtLTEvUIoB747loSZsq3rHe8V2f2YGl"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/shortvideo.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      Short Video
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Hidden Gems In Your City
+                      <br /><br /><br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/1C48R571I-dDRB2nZYBFl648VM0i-1Q9J?usp=drive_link"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/balancingcase.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      Balancing Case
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Suistanable Accounting Finance In Digital Era
+                      <br />
+                      <br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/10FJUP17g2s6X3q5CQn4i7zVtoirkQfM3?usp=drive_link"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+                <li class="w-96 p-5">
+                  <div class="border rounded-lg p-5 h-full">
+                    <img
+                      class="h-52 w-full object-cover rounded-md"
+                      src="public/img/enterpreneur.jpg"
+                      alt=""
+                    />
+                    <h2
+                      class="mt-2 text-xl font-bold text-center font-manrope text-white"
+                    >
+                      Enterpreneurship
+                    </h2>
+                    <p class="mt-2 text-white text-center pb-3">
+                      Best E-Commerce Startups
+                      <br />
+                      <br />
+                      <br />
+                    </p>
+                    <a
+                      href="https://drive.google.com/drive/folders/10H2yNpfzW64LMNN_241nIOYbig3NN7b7?usp=drive_link"
+                      class="mt-4 px-6 py-2 rounded-md bg-green-600 text-white font-semibold"
+                    >
+                      Download File
+                    </a>
+                    <a
+                      href="http://linktr.ee/creanomic23"
+                      class="mx-5 px-6 py-2 rounded-md bg-white text-black border border-green-500 font-semibold"
+                    >
+                      CP
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="w-2/12 flex items-center">
+              <div class="w-full">
+                <button
+                  onclick="next()"
+                  class="p-3 rounded-full bg-white border border-gray-100 shadow-lg ml-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- competition end -->
+
+        <!-- Sponsorship -->
+
+        <div class="container">
+          <h1
+            class="text-5xl pt-6 lg:pt-16 xl:pt-28 text-white font-dsd text-center"
+          >
+            Sponsorship
+          </h1>
+          <div class="flex flex-wrap items-center justify-center">
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 17.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 18.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 20.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 21.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Partner -->
+
+        <div class="container">
+          <h1
+            class="text-5xl pt-2 lg:pt-10 xl:pt-16 font-dsd text-center text-white"
+          >
+            Media Partner
+          </h1>
+          <div class="flex flex-wrap items-center justify-center">
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 9.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 10.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 11.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 12.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-center">
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 13.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 14.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 15.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+            <div class="bg-none w-24 h-24 overflow-hidden mb-10 mt-10 mx-5">
+              <img
+                src="public/img/Frame 16.png"
+                alt="Blog"
+                class="h-auto max-w-full rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Partner end -->
+
+        <!-- Logo Philosophy -->
+
+        <div class="container mb-16">
+          <h1
+            class="text-5xl pt-2 lg:pt-10 xl:pt-16 text-white font-dsd text-center my-10 mb-16"
+          >
+            Logo Philosophy
+          </h1>
+          <div class="flex flex-wrap">
+            <div
+              class="w-full md:w-1/2 xl:w-1/3 items-center justify-center flex"
+            >
+              <div
+                class="rounded-md bg-purple-900 py-4 px-4 hover:shadow-lg mx-4 border-2 border-white mb-4 md:mb-2"
+              ></div>
+              <p class="flex font-dsd px-2 text-white">
+                Elegance, luxury,
+                <br />
+                creativity, and imagination.
+              </p>
+            </div>
+            <div
+              class="w-full md:w-1/2 xl:w-1/3 items-center justify-center flex"
+            >
+              <div
+                class="rounded-md bg-pink py-4 px-4 hover:shadow-lg mx-4 border-2 border-white mb-4 md:mb-2"
+              ></div>
+              <p class="flex font-dsd px-2 text-white">
+                Affection, tenderness, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <br />
+                and warmth.
+              </p>
+            </div>
+
+            <div
+              class="w-full md:w-1/2 xl:w-1/3 items-center justify-center flex"
+            >
+              <div
+                class="rounded-md bg-orange-500 py-4 px-4 hover:shadow-lg mx-4 border-2 border-white mb-4 md:mb-2"
+              ></div>
+              <p class="flex font-dsd px-2 text-white">
+                Excitement, joy, and &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;<br />
+                positive.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex w-full items-center flex-col md:flex-row lg:items-start gap-4 md:gap-6 justify-center md:p-36"
+          >
+            <div class="flex flex-col lg:gap-12 items-center">
+              <img
+                src="public/img/filosofi-1.png"
+                class="h-40 lg:h-52"
+                alt=""
+              />
+              <p class="font-dsd mx-4 text-center text-white">
+                The moon is connected to cycles,<br />
+                change, and growth.
+              </p>
+            </div>
+            <div class="flex flex-col lg:gap-12 items-center">
+              <img
+                src="public/img/filosofi-2.png"
+                class="h-40 lg:h-52"
+                alt=""
+              />
+              <p class="font-dsd mx-4 text-center text-white">
+                Capybara is a harmonious animal
+                <br />with nature and the surrounding environment,<br />
+                they are known for their gentle nature,
+                <br />
+                peace and simplicity.
+              </p>
+            </div>
+            <div class="flex flex-col lg:gap-12 items-center">
+              <img
+                src="public/img/filosofi-3.png"
+                class="h-40 lg:h-52"
+                alt=""
+              />
+              <p class="font-dsd mx-4 text-center text-white">
+                Stars symbolize dreams,<br />
+                aspirations, and guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-white flex justify-center w-full py-4">
+      <div class="container">
+        <div class="flex items-center justify-between">
+          <div class="px-4">
+            <p class="text-left font-manrope text-lg">
+              Copyright &copy; Creanomic 2023. All rights reserved
+            </p>
+          </div>
+          <div id="footer" class="py-5 bg-white flex lg:py-0">
+            <ul class="flex lg:justify-end">
+              <li class="mx-5 w-14">
+                <a href="https://www.instagram.com/creanomic_vokasiub/">
+                  <img src="public/img/instagram.svg" alt="Instagram" />
+                </a>
+              </li>
+              <li class="mx-5 w-14">
+                <a href="https://www.tiktok.com/@creanomic_vokasiub">
+                  <img src="public/img/tiktok.svg" alt="TikTok" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    <script src="dist/js/script.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

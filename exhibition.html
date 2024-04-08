@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exhibition</title>
+    <link rel="icon" href="public/img/fix logo crea.png" type="image" />
+
+
+
+  <!-- script -->
+ 
+    <link href="dist/output.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10">
+      <div class="container">
+        <div class="flex items-center justify-between relative">
+          <div class="px-4">
+            <a href="index.html" class="w-auto">
+              <img src="public/img/logo.svg" />
+            </a>
+          </div>
+          <div class="flex items-center px-4">
+            <button
+              id="hamburger"
+              name="hamburger"
+              type="button"
+              class="block absolute right-4 lg:hidden"
+            >
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+              <span
+                class="hamburger-line transition duration-300 ease-in-out"
+              ></span>
+            </button>
+
+            <nav
+              id="nav-menu"
+              class="hidden absolute py-5 bg-white shadow-lg rounded-lg w-full right-0 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none"
+            >
+              <ul class="block lg:flex">
+                <li class="group">
+                  <a
+                    href="index.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Home</a
+                  >
+                </li>
+                <li class="group">
+                  <div
+                    @click.away="open = false"
+                    class="relative"
+                    x-data="{ open: false }"
+                  >
+                    <button
+                      @click="open = !open"
+                      class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:inline md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                    >
+                      <span class="text-base font-manrope mx-4">Event</span>
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        :class="{'rotate-180': open, 'rotate-0': !open}"
+                        class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </button>
+                    <div
+                      x-show="open"
+                      x-transition:enter="transition ease-out duration-100"
+                      x-transition:enter-start="transform opacity-0 scale-95"
+                      x-transition:enter-end="transform opacity-100 scale-100"
+                      x-transition:leave="transition ease-in duration-75"
+                      x-transition:leave-start="transform opacity-100 scale-100"
+                      x-transition:leave-end="transform opacity-0 scale-95"
+                      class="absolute px-2 py-2 rounded-md dark-mode:bg-gray-800 max-w-sm -ml-6"
+                    >
+                      <div
+                        class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 max-w-sm ml-36"
+                      >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 focus:text-gray-900 hover:bg-gray-200 hover:text-purple focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="workshop.html"
+                          >Workshop</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="exhibition.html"
+                          >Exhibition</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="fest.html"
+                          >Fest</a
+                        >
+                        <a
+                          class="font-manrope block px-4 py-2 mt-2 text-base font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-purple focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                          href="umkm.html"
+                          >Market Day</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="group">
+                  <a
+                    href="merchandise.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Merchandise</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="competition.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Competition</a
+                  >
+                </li>
+                <li class="group">
+                  <a
+                    href="talkshow.html"
+                    class="font-semibold font-manrope text-base text-black py-2 mx-8 flex group-hover:text-purple"
+                    >Talkshow</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- navbar end -->
+
+    <!-- Hero Section Start -->
+<section class="mt-0 items-center w-full">
+  <div
+  class="bg-local bg-no-repeat bg-cover bg-center justify-center w-full"
+  style="
+    background-image: url(public/img/bg\ exhibition.svg);
+    background-size: cover;
+  "
+ >
+  <div class="container">
+    <div class="w-full px-4">
+      <div class="mx-auto text-center mt-10 pt-32 ">
+        
+        <h1 class="font-bold text-white text-5xl mb-4 font-dsd pb-10 tracking-wider ">EXHIBITION</h1>
+       
+      </div>
+    </div>
+  </div>
+
+<!-- Hero Section End -->
+
+<!-- Section Blog Start -->
+<section id="Blog" class=" px-5">
+  <div class="container">
+      <div class="w-full px-4">
+          <div class="max-w-4xl  text-start mb-16  ml-24">
+              <h2 class="font-bold text-white text-3xl mb-4 font-dsd tracking-wider">Techfair</h2>
+              <p class="font-medium text-md text-white font-manrope">
+                Techfair is an activity carried out to pour creativity and introduce products from students of the Information Technology and Graphic Design study programs to the wider community by collaborating. The theme of this activity is "Future is Art" where this theme tells that designing technology in the future is art.
+              </p>
+          </div>
+      </div>
+      <div class="flex flex-wrap">
+          <div class="w-full px-4 lg:w-1/3 xl:w-1/3 ">
+              <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                  <img src="public/img/Wolftagon.jpg" alt="Blog" class="w-full">
+                  <div class="py-8 px-6">
+                      <h3>
+                          <a href="#" class="block mb-3 font-semibold text-xl 
+                          text-slate-950  truncate">Wolftagon</a>
+                      </h3>
+                     
+                      
+                  </div>
+              </div>
+          </div>
+          <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+              <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                  <img src="public/img/WISEECO WEBSITE.jpg" alt="Blog" class="w-full">
+                  <div class="py-8 px-6">
+                      <h3>
+                          <a href="#" class="block mb-3 font-semibold text-xl 
+                          text-slate-950  truncate">Wiseeco Website</a>
+                      </h3>
+                     
+                      
+                  </div>
+              </div>
+          </div>
+          <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                  <img src="public/img/Vokapos.jpg" alt="Blog" class="w-full">
+                  <div class="py-8 px-6">
+                      <h3>
+                          <a href="#" class="block mb-3 font-semibold text-xl 
+                          text-slate-950  truncate">Vokapos</a>
+                      </h3>
+                    
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-full px-4 lg:w-1/3 xl:w-1/3 ">
+            <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                <img src="public/img/SMART GARDEN SYSTEM WITH AUTOMATIC IRRIGATION.jpg" alt="Blog" class="w-full">
+                <div class="py-8 px-6">
+                    <h3>
+                        <a href="#" class="block mb-3 font-semibold text-xl 
+                        text-slate-950  truncate">Smart Garden System Automatic Irrigation</a>
+                    </h3>
+                  
+                    
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+            <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                <img src="public/img/MYECO.jpg" alt="Blog" class="w-full">
+                <div class="py-8 px-6">
+                    <h3>
+                        <a href="#" class="block mb-3 font-semibold text-xl 
+                        text-slate-950  truncate">Myeco</a>
+                    </h3>
+                  
+                    
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                <img src="public/img/Kendali Robot Rumah.jpg" alt="Blog" class="w-full">
+                <div class="py-8 px-6">
+                    <h3>
+                        <a href="#" class="block mb-3 font-semibold text-xl 
+                        text-slate-950  truncate">Kendali Robot Rumah</a>
+                    </h3>
+                   
+                    
+                </div>
+            </div>
+        </div>
+        <div class="w-full px-4">
+          <div class="max-w-4xl  text-start mb-16 ml-16">
+              <h2 class="font-bold text-white text-3xl mb-4 font-dsd tracking-wider">Midfest</h2>
+              <p class="font-medium text-md text-white font-manrope">
+                Midfest with the theme 'Bits of Joy' is a stunning art exhibition, depicting the beauty in every small detail of life. In this exhibition, you will explore the work of talented artists, depicting moments of happiness, serenity and magic hidden all around us.
+              </p>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full px-4 lg:w-1/3 xl:w-1/3 ">
+                <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                    <img src="public/img/Sapu Ajaib.jpg" alt="Blog" class="w-full">
+                    <div class="py-8 px-6">
+                        <h3>
+                            <a href="#" class="block mb-3 font-semibold text-xl 
+                            text-slate-950  truncate">Sapu Ajaib</a>
+                        </h3>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Dodik Hendra </p>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                          This art depicts a child who, who should be sweeping the terrace, instead plays happily with a broom like a circus performer. These memories highlight the simple joys of childhood that are so easy to find, in contrast to the complexity of adult life. <br> <br>
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                    <img src="public/img/Masa Sekarang.jpg" alt="Blog" class="w-full">
+                    <div class="py-8 px-6">
+                        <h3>
+                            <a href="#" class="block mb-3 font-semibold text-xl 
+                            text-slate-950  truncate">Masa Sekarang</a>
+                        </h3>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Dodik Hendra </p>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                          In contrast to the beautiful, carefree childhood, a new unwelcome companion emerges in the present: depression. Nights are haunted by a sleep thief that ruthlessly steals peace. The labyrinth of anxiety and uncertainty proves difficult to navigate, turning restful sleep into a distant dream.
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                    <img src="public/img/Harmony Like Koi.jpg" alt="Blog" class="w-full">
+                    <div class="py-8 px-6">
+                        <h3>
+                            <a href="#" class="block mb-3 font-semibold text-xl 
+                            text-slate-950  truncate">Harmony Like Koi</a>
+                        </h3>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Vichtiani Handayani </p>
+                        <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                          Depicting a peaceful blend of human interaction with nature, this piece features a woman with water and koi fish, symbolizing the delicate balance between humanity and the environment. It serves as a reminder of the existence of peaceful coexistence and shared understanding that can be achieved.
+                        </p>
+                       
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                  <img src="public/img/Harmoni Layangan di Langit Biru.jpg" alt="Blog" class="w-full">
+                  <div class="py-8 px-6">
+                      <h3>
+                          <a href="#" class="block mb-3 font-semibold text-xl 
+                          text-slate-950  truncate">Harmoni Layangan Kecil di Langit Biru</a>
+                          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Abidillah Luqman Akhtar </p>
+                      </h3>
+                      <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                        A reminiscence of childhood, where friends flew vibrant kites in the clear sky. Small smiles were etched while their kites danced freely like butterflies in the open sky. On bright, colorful days, laughter resonated, accompanied by the graceful shadows of kites gliding above the green grass.
+                      </p>
+                     
+                  </div>
+              </div>
+          </div>
+          <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+                <img src="public/img/Grateful.jpg" alt="Blog" class="w-full">
+                <div class="py-8 px-6">
+                    <h3>
+                        <a href="#" class="block mb-3 font-semibold text-xl 
+                        text-slate-950  truncate">Grateful</a>
+                    </h3>
+                    <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Arzeti Azizah Afif </p>
+                    <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                      Being grateful for what happened in childhood, including special moments of happiness <br><br><br><br><br>
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+              <img src="public/img/Fairytale.jpg" alt="Blog" class="w-full">
+              <div class="py-8 px-6">
+                  <h3>
+                      <a href="#" class="block mb-3 font-semibold text-xl 
+                      text-slate-950  truncate">Fairytale</a>
+                  </h3>
+                  <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Anjani Audita </p>
+                  <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                    Fairytale reflects the character's childhood full of adventure and beautiful dreams. hearing fairy tales in childhood brings hope to children about the existence of a magical world that no one has ever touched, and small children always try to find it. <br><br>
+                  </p>
+                 
+              </div>
+          </div>
+      </div>
+      <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+            <img src="public/img/Eternal All Time.jpg" alt="Blog" class="w-full">
+            <div class="py-8 px-6">
+                <h3>
+                    <a href="#" class="block mb-3 font-semibold text-xl 
+                    text-slate-950  truncate">Eternal All Time</a>
+                </h3>
+                <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Rafidah Kusuma W. </p>
+                <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                  I want you to enjoy this painting from me with heart, where at that time, there was only the laughter of happy children by the clear river and the coolness of the green hills without any sadness.
+                </p>
+               
+            </div>
+        </div>
+    </div>
+    <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+          <img src="public/img/Bereksplorasi.jpg" alt="Blog" class="w-full">
+          <div class="py-8 px-6">
+              <h3>
+                  <a href="#" class="block mb-3 font-semibold text-xl 
+                  text-slate-950  truncate">Bereksplorasi</a>
+              </h3>
+              <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Arzeti Azizah Afif </p>
+              <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+                Exploring new things since childhood is truly enjoyable, especially when allowed to discover them on your own. It's a childhood moment of happiness that can never be repeated
+              </p>
+             
+          </div>
+      </div>
+  </div>
+  <div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+        <img src="public/img/Ayo AAK.jpg" alt="Blog" class="w-full">
+        <div class="py-8 px-6">
+            <h3>
+                <a href="#" class="block mb-3 font-semibold text-xl 
+                text-slate-950  truncate">Ayo AAK</a>
+            </h3>
+            <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Alivia Naila Izzah </p>
+            <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+              When you're being fussy during meals, Mom usually swings the spoon like an airplane zooming by, saying, 'Come on, dear, the airplane is about to land.' Ah, indeed, Mom's bites taste more delicious, don't they?
+            </p>
+           
+        </div>
+    </div>
+</div>
+<div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+      <img src="public/img/Anak Digital.jpg" alt="Blog" class="w-full">
+      <div class="py-8 px-6">
+          <h3>
+              <a href="#" class="block mb-3 font-semibold text-xl 
+              text-slate-950  truncate">Anak Digital</a>
+          </h3>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Tiazza Winneythou </p>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+            This work reflects on how digital technology has influenced the lives of children. It portrays digital children created through games like Tamagotchi and Poo, which have become daily companions. 
+         
+      </div>
+  </div>
+</div>
+<div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+      <img src="public/img/A Child Who Missed The Beauty Chillhood.jpg" alt="Blog" class="w-full">
+      <div class="py-8 px-6">
+          <h3>
+              <a href="#" class="block mb-3 font-semibold text-xl 
+              text-slate-950  truncate">A Child Who Missed The Beauty Childhood</a>
+          </h3>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Faula Mulyani </p>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+            The piece portrays a child longing for the lost beauty of childhood, expressing their escape into a world of imagination as a response to early trauma. The child creates a fantasy world, finding awe in its beauty.
+          </p>
+         
+      </div>
+  </div>
+</div>
+<div data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="3000" class="w-full px-4 lg:w-1/3 xl:w-1/3">
+  <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
+      <img src="public/img/Through Our Power.jpg" alt="Blog" class="w-full">
+      <div class="py-8 px-6">
+          <h3>
+              <a href="#" class="block mb-3 font-semibold text-xl 
+              text-slate-950  truncate">T.O.P - Through Our Power</a>
+          </h3>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">-- Karya Kelvin </p>
+          <p class="font-medium text-base text-slate-400 mb-6 font-manrope">
+            Try, the only thing we can do, I know this sounds crazy. But this is true, this world will not support you at all, everything you do is just in vain if the effort you put in is not worth it. 
+          </p>
+         
+      </div>
+  </div>
+</div>
+      </div>
+      
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- Section Blog End -->
+        <!-- footer -->
+        <footer class="bg-white bottom-0 w-full py-4">
+          <div class="container">
+            <div class="flex items-center justify-between">
+              <div class="px-4">
+                <p class="text-left font-manrope text-lg">
+                  Copyright &copy; Creanomic 2023. All rights reserved
+                </p>
+              </div>
+              <div id="footer" class="py-5 bg-white flex lg:py-0">
+                <ul class="flex lg:justify-end">
+                  <li class="mx-5 w-14">
+                    <a href="https://www.instagram.com/creanomic_vokasiub/">
+                      <img src="public/img/instagram.svg" alt="Instagram" />
+                    </a>
+                  </li>
+                  <li class="mx-5 w-14">
+                    <a href="https://www.tiktok.com/@creanomic_vokasiub">
+                      <img src="public/img/tiktok.svg" alt="TikTok" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- footer end -->
+<!-- script -->
+<script src="dist/js/script.js"></script>
+        <script src="dist/js/script.js"></script>
+
+  </body>
+</html>
